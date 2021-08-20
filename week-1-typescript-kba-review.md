@@ -38,7 +38,7 @@ type NumberOrString = number | string;
     };
     ```
 
-- How to use a type to specify a function signature:
+- **Pay attention to this one.** How to use a type to specify a function signature:
 
 // Type alias for a function which has to accept a Person type as an argument and returns a number
 type getPersonAge = (info: Person) => number;
@@ -55,7 +55,15 @@ const sayHiAgain = (name) => {
 
 ## Good to know but not critical
 
-- How to define an interface.
+- How to define an interface. Example:
+```
+// Interfaces and types share similar roles. This can use the same thing as the Person type above.
+interface Person { 
+    name: string;
+      age: number;
+      height: Inches;
+      nickName?: string; // question mark makes it optional
+}
 
 - How to write a simple class in Typescript: constructor, using the `this` context in methods, and defining methods. Don't worry about private methods or extending other classes and stuff like that.
 
