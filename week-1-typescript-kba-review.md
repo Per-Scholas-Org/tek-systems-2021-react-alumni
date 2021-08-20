@@ -53,6 +53,15 @@ const sayHiAgain = (name) => {
 }
 ```
 
+## Good to know but not critical
+
+- How to define an interface.
+
+- How to write a simple class in Typescript: constructor, using the `this` context in methods, and defining methods. Don't worry about private methods or extending other classes and stuff like that.
+
+- How to implement an interface with class.
+
+
 
 
 
