@@ -38,7 +38,20 @@ type NumberOrString = number | string;
     };
     ```
 
+- How to use a type to specify a function signature:
 
+// Type alias for a function which has to accept a Person type as an argument and returns a number
+type getPersonAge = (info: Person) => number;
+
+- From Javascript: How to write and understand arrow functions:
+```
+const sayHi = name => `Hello, ${name}`
+
+// same as above
+const sayHiAgain = (name) => {
+    return `Hello, ${name};
+}
+```
 
 
 
