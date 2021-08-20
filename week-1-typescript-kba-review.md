@@ -24,6 +24,21 @@ type Color = string;
 type NumberOrString = number | string;
 ```
 
+- How to use a type alias
+    - To define the elements in an array: `const myArray: Array<NumberOrString> = [1, "two", "bird", 19, -5];`
+    - To define the shape of an object. This one also uses another type alias and has an example of an optional property for the type.
+    ```
+    type Inches = number;
+
+    type Person = {
+      name: string;
+      age: number;
+      height: Inches;
+      nickName?: string; // question mark makes it optional
+    };
+    ```
+
+
 
 
 
