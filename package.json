@@ -1,0 +1,22 @@
+{
+  "name": "tek-systems-2021-react-alumni",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Per-Scholas-Org/tek-systems-2021-react-alumni.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Per-Scholas-Org/tek-systems-2021-react-alumni/issues"
+  },
+  "homepage": "https://github.com/Per-Scholas-Org/tek-systems-2021-react-alumni#readme",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}
