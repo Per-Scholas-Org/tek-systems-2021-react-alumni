@@ -18,6 +18,11 @@ import { parse } from 'url';
  * 5. In your browser go to http://localhost:9999 - you can also go to http://localhost:8888 as we have started two different servers!
  * You should see a message in each : )
  */
+
+
+/**
+ * Server one
+ */
 const port = 9999;
 
 const getDatabaseInfo = function(request: IncomingMessage, response: ServerResponse) {
@@ -49,26 +54,9 @@ server.listen(port, function() {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * Server two
+ */
 
 const port2 = 8888;
 
