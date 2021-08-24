@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Per-Scholas-Org/tek-systems-2021-react-alumni#readme",
   "devDependencies": {
+    "@types/node": "^16.7.1",
     "typescript": "^4.3.5"
   }
 }
