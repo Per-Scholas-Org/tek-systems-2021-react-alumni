@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 });
 
+app.get('/page-two', (req, res) => {
+    // send the body of our http response
+    res.send("This is page two!");
+});
+
 app.listen(port, () => {
-    console.log(`Example app listening at http://`);
+    console.log(`Example app listening at http://localhost:${port}`);
 })
