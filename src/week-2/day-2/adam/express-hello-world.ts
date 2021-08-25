@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.get('/page-two', (req, res) => {
   // send the body of our http response
-  res.send('This is page two!');
+  res.send('This is page two!!');
 })
 
 app.listen(port, () => {
