@@ -75,6 +75,14 @@ function sayHi(person: {age: number, nickName: string}) {
     return `Hi, ${person.nickName}! You are ${person.age} years old.`;
 }
 
+// example in regular expression
+//....
+
+// example in arrow function
+const sayHi3: sayHello = (person: {age: number, nickName: string}) => {
+    return `Hi, ${person.nickName}! You are ${person.age} years old.`;
+}
+
 // console.log(sayHi({age: 22, nickName: 'Tommy'}));
 
 // people.forEach(person => console.log(sayHi(person)));
@@ -87,3 +95,9 @@ function sayHi(person: {age: number, nickName: string}) {
 for(let index = 0; index < people.length; index++){
     console.log('Index ' + index + ', message: ' + sayHi(people[index]));
 }
+
+const myPeopleToday = new MyPeople(people);
+
+console.log(myPeopleToday.sayHiToMyPerson(0));
+console.log(myPeopleToday.getPerson(0));
+console.log(myPeopleToday.getPeopleOfAge(22));
