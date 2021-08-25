@@ -22,6 +22,18 @@ interface PeopleHandler {
     getPeopleOfAge: (a: number) => People;
 }
 
+// another way to serve similar roles as the above interface object
+type AnotherPeopleHandler = {
+    // sayHi function 
+    sayHi: sayHello;
+    getPerson: (a: number) => Person; 
+
+    // say
+    sayHiToMyPerson: (a: number) => string;
+
+    getPeopleOfAge: (a: number) => People;
+}
+
 class MyPeople implements PeopleHandler{
     private people;
     constructor(people: People){
