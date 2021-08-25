@@ -7,13 +7,13 @@
 
 type Person = {age: number, nickName: string};
 
-type sayHiFunction = (a: Person) => string;
+type sayHello = (a: Person) => string;
 
 type People = Array<Person>; 
 
 interface PeopleHandler {
     // sayHi function 
-    sayHi: sayHiFunction;
+    sayHi: sayHello;
     getPerson: (a: number) => Person; 
 
     // say
