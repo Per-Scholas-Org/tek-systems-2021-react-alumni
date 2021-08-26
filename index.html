@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P I Z Z A !!!</title>
+</head>
+
+<body>
+
+    <h1> Pizza Ordering App </h1>
+
+    <form id="customerInformationForm">
+        <h2> Enter customer information</h2>
+
+        <label id="firstNameLabel">First name: </label>
+        <input id="firstNameInput" type="text" required title="Enter your Name" />
+        <br /> <br />
+
+        <label id="lastNameLabel">Last name: </label>
+        <input id="lastNameInput" type="text" required title="Enter your Last Name" />
+        <br /> <br />
+
+        <label id="address">Address: </label>
+        <input id="addressInput" type="text" required title="Enter your address" />
+        <br /> <br />
+        
+
+        <h2> What kind of pizza? </h2> <br />
+
+        <input id="veganPizzaInput" type="radio" name="pizzaType" value="Vegan">Vegan</input><br />
+        <input id="hamPizzaInput" type="radio" name="pizzaType" value="Ham Pizza">Ham Pizza</input><br />
+        <input id="pepperoniPizzaInput" type="radio" name="pizzaType" value="Pepperoni Pizza">Pepperoni
+        Pizza</input><br />
+        <input id="sausagePizzaInput" type="radio" name="pizzaType" value="Sausage Pizza">Sausage Pizza</input><br />
+        <input id="anchoviesPizzaInput" type="radio" name="pizzaType" value="Anchovies Pizza">Anchovies Pizza</input><br />
+
+
+
+        <br />
+
+
+
+        <h2> What size? </h2>
+        <input required id="smallSizeInput" type="radio" name="pizzaSize" value="small">Small</input><br />
+        <input required id="mediumSizeInput" type="radio" name="pizzaSize" value="medium">Medium</input><br />
+        <input required id="largeSizeInput" type="radio" name="pizzaSize" value="large">Large</input><br />
+
+        <br />
+
+
+        <input type="button" id="submitButton" value="Place Order" title="Click to place and order" />
+    </form>
+
+    <p id="confirmation"> </p>
+    <h3> Orders </h3>
+
+    <table id="ordersTable">
+        <thead>
+            <tr>
+                <th> Date / Time </th>
+                <th> Type </th>
+                <th> Size </th>
+                <th> Delete </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+
+    </table>
+
+    <h3> JSON Objects </h3>
+    <p id="json"> </p>
+
+    <script src="pizza-ordering-app.js"></script>
+</body>
+
+</html>
