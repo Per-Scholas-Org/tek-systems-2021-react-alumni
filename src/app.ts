@@ -1,47 +1,48 @@
-// Node.js http module - part of Node.js standard libary. Express uses it under the hood.
-//const http = require('http')
-
-// es6 module import
-import express from 'express';
+import express, { response } from 'express';
+import fs from 'fs';
 
 console.log('hi');
 
-// create our webserver
 const app = express();
-
-// the port our webserver will listen on.
 const PORT = 8888;
 
-const BASE_PATH = '/';
+// TODO: For a GET request like http://localhost:8888?name=chris
+// only display on the web page "chris" OR display "Chris not found" if the name 
+// isnt in the list.
+app.get('/names', (req, res) => {
+  fs.readFile('./resources/names-list.txt', 'utf8' , (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
 
-// GET used to get information - should never modify state. 
-// For example a GET request should never modify information in a databse.
-// A GET request would be used to get information about a user from a database.
-app.get(BASE_PATH, (req, res) => {
-  res.send(`HTTP ${req.method} request received at ${BASE_PATH}`);
+    // successfully got file data
+    const responseBody = `HTTP ${req.method} request received at ${req.url}. Names are ${data}`;
+
+
+    res.write("hello");
+    res.write("world");
+    res.end();
+
+    // does same as above
+    res.send("hello world")
+
+    //res.send(responseBody);
+  })
 });
 
-// POST used to add new information 
-// For example a POST request would be used to create a new user account on the database..
-app.post(BASE_PATH, (req, res) => {
-  res.send(`HTTP ${req.method} request received at ${BASE_PATH}`);
+app.post('/', (req, res) => {
+  res.send(`HTTP ${req.method} request received at ${req.url}`);
 })
 
-// PUT used to update existing information.
-// For example a PUT request would be used to change a users name in the database.
-app.put(BASE_PATH, (req, res) => {
-  res.send(`HTTP ${req.method} request at ${BASE_PATH}`);
+app.put('/', (req, res) => {
+  res.send(`HTTP ${req.method} request at ${req.url}`);
 })
 
-// DELETE used to delete existing information.
-// For example a DELETE request would be used to delete a user account.
-app.delete(BASE_PATH, (req, res) => {
-  res.send(`HTTP ${req.method} request received at ${BASE_PATH}`);
+app.delete('/', (req, res) => {
+  res.send(`HTTP ${req.method} request received at ${req.url}`);
 })
 
-// Started the server and told it what port to listen
-// We passed in an arrow function as a callback - the callback is executed when 
-// the server receives a request on that port.
 app.listen(PORT, () => {
   console.log(`app listening at http://localhost:${PORT}`);
 });
