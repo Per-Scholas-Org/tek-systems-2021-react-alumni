@@ -11,8 +11,9 @@ const PORT = 9999;
 // TODO: For a GET request like http://localhost:8888?name=chris
 // only display on the web page "chris" OR display "Chris not found" if the name 
 // isnt in the list.
+// To use req.query.name use ?+name => http://localhost:9999/names?name=johnathan
 app.get('/names', (req, res) => {
-  fs.readFile('./resources/names-list.txt', 'utf8' , (err, data) => {
+  fs.readFile('../resources/names-list.txt', 'utf8' , (err, data) => {
     if (err) {
       console.error(err);
       return;
@@ -31,6 +32,7 @@ app.get('/names', (req, res) => {
       console.log('name query param is ', req.query.name);
       const dataAsArray = data.split('\n');
       // TODO: Get req.query.name from datasArray  and return it in res.send()
+      console.log(dataAsArray);
 
       let desirdName = "";
       res.send(`Found name: ${desiredName}`)
@@ -44,6 +46,7 @@ app.post('/names', (req, res) => {
 
 // IMPORTANT: YOU WILL NEED TO USE POSTMAN TO TEST THIS 
 // If there is a query param "name", add the name to the end of the file
+// to use this put request, type your input after the name and slash http://localhost:9999/names/johnathan
 app.put('/names/:name', (req, res) => {
   let newData = '\n' + req.params.name;
   fs.appendFile('../resources/names-list.txt', newData, function (err) {
