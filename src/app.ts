@@ -1,6 +1,6 @@
-import express, { response } from 'express';
-import fs from 'fs';
-
+//mport express, { response } from 'express';
+var express = require("express");
+var fs = require("fs");
 console.log('hi');
 
 const app = express();
@@ -9,6 +9,9 @@ const PORT = 9999;
 // TODO: For a GET request like http://localhost:8888?name=chris
 // only display on the web page "chris" OR display "Chris not found" if the name 
 // isnt in the list.
+app.get("/", (req, res)=> {
+  res.send("HELLO")
+})
 app.get('/names', (req, res) => {
   fs.readFile('./resources/names-list.txt', 'utf8' , (err, data) => {
     if (err) {
