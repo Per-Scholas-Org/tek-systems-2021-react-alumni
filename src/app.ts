@@ -1,5 +1,7 @@
-import express, { response } from 'express';
-import fs from 'fs';
+// import express, { response } from 'express';
+// import fs from 'fs';
+const express = require('express');
+const fs = require('fs');
 
 console.log('hi');
 
@@ -42,7 +44,26 @@ app.post('/names', (req, res) => {
 
 // IMPORTANT: YOU WILL NEED TO USE POSTMAN TO TEST THIS 
 // If there is a query param "name", add the name to the end of the file
-app.put('/names', (req, res) => {
+app.put('/names/:name', (req, res) => {
+  let newData = '\n' + req.params.name;
+  fs.appendFile('../resources/names-list.txt', newData, function (err) {
+    if (err) {
+      // append failed
+    } else {
+      // done
+      console.log(`${newData} has been added to file`);
+
+    }
+  })
+  // fs.writeFile('../resources/names-list.txt', newData, err => {
+  //   if (err) {
+  //     console.error(err)
+  //     return
+  //   }
+  //   //file written successfully
+  //   console.log(`${newData} has been added to file`);
+  // });
+
   res.send(`HTTP ${req.method} request at ${req.url}`);
 })
 
