@@ -2,7 +2,7 @@ var fs = require('fs');
 var express = require('express');
 var app = express();
 var port = 8888;
-fs.readFile('names.txt', 'utf8', function (err, data) {
+fs.readFile('name.txt', 'utf8', function (err, data) {
     if (err) {
         console.error(err);
         return;
