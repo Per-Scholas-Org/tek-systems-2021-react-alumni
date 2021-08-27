@@ -30,6 +30,8 @@ app.get('/about', (req, res) => {
   res.render('about');
 })
 
+const NAMES_LIST_PATH = './resources/names-list.txt';
+
 // TODO: For a GET request like http://localhost:8888?name=chris
 // only display on the web page "chris" OR display "Chris not found" if the name 
 // isnt in the list.
@@ -57,6 +59,45 @@ app.get('/names', (req, res) => {
       res.render('names', { names: [desiredName] });
     }
 
+  })
+});
+
+const STUDENTS_ROUTE = '/students';
+
+app.get(STUDENTS_ROUTE, (req, res) => {
+  fs.readFile(NAMES_LIST_PATH, 'utf8' , (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    const namesArray = data.split('\n');
+    res.render('names', { names: namesArray });
+  })
+});
+
+// TODO: Crreate a view page for each student. So each student has their own page
+app.get(`${STUDENTS_ROUTE}/:name`, (req, res) => {
+  const params = req.params;
+  console.log(params);
+  fs.readFile(NAMES_LIST_PATH, 'utf8' , (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    const namesArray = data.split('\n');
+
+    if(!params) {
+      res.send('no name')
+    }
+
+    else {
+      const desiredName =namesArray.find(name => {
+        return name.toLowerCase() == params.name;
+      })
+      res.render('names', { names: [desiredName] });
+    }
   })
 });
 
