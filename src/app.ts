@@ -4,7 +4,7 @@ import fs from 'fs';
 console.log('hi');
 
 const app = express();
-const PORT = 8888;
+const PORT = 9999;
 
 // TODO: For a GET request like http://localhost:8888?name=chris
 // only display on the web page "chris" OR display "Chris not found" if the name 
@@ -16,30 +16,37 @@ app.get('/names', (req, res) => {
       return;
     }
 
-    // successfully got file data
-    const responseBody = `HTTP ${req.method} request received at ${req.url}. Names are ${data}`;
+    const queryParamsString = JSON.stringify(req.query);
+    console.log(queryParamsString);
 
+    let desiredName = "";
 
-    res.write("hello");
-    res.write("world");
-    res.end();
+    if(!req.query.name) {
+      res.send('No query param for a name');
+    }
 
-    // does same as above
-    res.send("hello world")
+    else {
+      console.log('name query param is ', req.query.name);
+      const dataAsArray = data.split('\n');
+      // TODO: Get req.query.name from datasArray  and return it in res.send()
 
-    //res.send(responseBody);
+      let desirdName = "";
+      res.send(`Found name: ${desiredName}`)
+    }
   })
 });
 
-app.post('/', (req, res) => {
+app.post('/names', (req, res) => {
   res.send(`HTTP ${req.method} request received at ${req.url}`);
 })
 
-app.put('/', (req, res) => {
+// IMPORTANT: YOU WILL NEED TO USE POSTMAN TO TEST THIS 
+// If there is a query param "name", add the name to the end of the file
+app.put('/names', (req, res) => {
   res.send(`HTTP ${req.method} request at ${req.url}`);
 })
 
-app.delete('/', (req, res) => {
+app.delete('/names', (req, res) => {
   res.send(`HTTP ${req.method} request received at ${req.url}`);
 })
 
