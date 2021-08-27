@@ -49,9 +49,10 @@ app.put('/names/:name', (req, res) => {
   fs.appendFile('../resources/names-list.txt', newData, function (err) {
     if (err) {
       // append failed
+      console.log(`Failed to add ${newData} to text file`)
     } else {
       // done
-      console.log(`${newData} has been added to file`);
+      console.log(`${newData} has been added to text file`);
 
     }
   })
