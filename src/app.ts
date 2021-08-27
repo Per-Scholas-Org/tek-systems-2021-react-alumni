@@ -1,10 +1,16 @@
-import express, { response } from 'express';
+// node.js imports
 import fs from 'fs';
+
+// npm module imports
+import express from 'express';
+
+// src code imports
+import { getPort } from './config-info';
 
 console.log('hi');
 
 const app = express();
-const PORT = 9999;
+const PORT = getPort();
 
 // TODO: For a GET request like http://localhost:8888?name=chris
 // only display on the web page "chris" OR display "Chris not found" if the name 
