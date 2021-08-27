@@ -1,5 +1,6 @@
 // node.js imports
 import fs from 'fs';
+import path from 'path';
 
 // npm module imports
 import express from 'express';
@@ -11,6 +12,23 @@ console.log('hi');
 
 const app = express();
 const PORT = getPort();
+
+// set where express looks for view templates
+const viewPath = path.join(__dirname, "../src/views/pages");
+console.log('View path is ', viewPath);
+
+app.set("views", viewPath);
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  res.render('index');
+})
+
+app.get('/about', (req, res) => {
+  res.render('about');
+})
 
 // TODO: For a GET request like http://localhost:8888?name=chris
 // only display on the web page "chris" OR display "Chris not found" if the name 
@@ -25,20 +43,20 @@ app.get('/names', (req, res) => {
     const queryParamsString = JSON.stringify(req.query);
     console.log(queryParamsString);
 
-    let desiredName = "";
+    const namesArray = data.split('\n');
 
+    // If no name in query param, list all the names
     if(!req.query.name) {
-      res.send('No query param for a name');
+      res.render('names', { names: namesArray });
     }
 
     else {
-      console.log('name query param is ', req.query.name);
-      const dataAsArray = data.split('\n');
-      // TODO: Get req.query.name from datasArray  and return it in res.send()
-
-      let desirdName = "";
-      res.send(`Found name: ${desiredName}`)
+      const desiredName =namesArray.find(name => {
+        return name.toLowerCase() == req.query.name;
+      })
+      res.render('names', { names: [desiredName] });
     }
+
   })
 });
 
