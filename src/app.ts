@@ -71,8 +71,17 @@ app.put('/names/:name', (req, res) => {
   res.send(`HTTP ${req.method} request at ${req.url}`);
 })
 
-app.delete('/names', (req, res) => {
-  res.send(`HTTP ${req.method} request received at ${req.url}`);
+app.delete('/names/:name', (req, res) => {
+  
+  fs.readFile('../resources/names-list.txt', 'utf8' , (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    let newValue = data.replace(req.params.name, '');
+    fs.writeFileSync('../resources/invited-name-list.txt', newValue, 'utf-8');
+    res.send(`HTTP ${req.method} request received at ${req.url}`);
+  });
 })
 
 app.listen(PORT, () => {
