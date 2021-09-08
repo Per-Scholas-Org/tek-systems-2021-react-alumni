@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h1>List of Names</h1>
+      <p>Welcome to templating using EJS</p>
+      <ul> 
+        <% names.forEach((name) => { %> 
+          <li> 
+            Hello, <%= name %>
+          </li> 
+        <% }) %> 
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+
+  </body>
+</html>
