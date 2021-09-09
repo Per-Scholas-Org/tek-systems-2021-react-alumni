@@ -1,6 +1,6 @@
 # Interview Prep
 
-## Questions to always ask
+## Questions you should ask
 - What is the interviewer's role at the company?
 - What does the team I might be joining do?
 - What is your team working on now / what problems are you solving?
